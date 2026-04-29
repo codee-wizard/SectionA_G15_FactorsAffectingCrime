@@ -1,4 +1,5 @@
-1. Nakul - https://nakul-jaglan.github.io/DVAPortfolio/
-2. Ishan - https://ishangoyal.vercel.app/
-3. Arun - https://data-visualization-and-analysis-por.vercel.app/
-4. Divyansh Rathore - https://dva-portfolio-blush.vercel.app/
+1. Apoorva Choudhary - https://codee-wizard.github.io/DVAPortfolio/
+2. Nakul - https://nakul-jaglan.github.io/DVAPortfolio/
+3. Ishan - https://ishangoyal.vercel.app/
+4. Arun - https://data-visualization-and-analysis-por.vercel.app/
+5. Divyansh Rathore - https://dva-portfolio-blush.vercel.app/
