@@ -2,8 +2,7 @@ SectionName_TeamID_ProjectName
 
 Project structure template for the AirBnB Revenue Insight project.
 
-## 🔗 Live Portfolio
-[https://data-visualization-and-analysis-por.vercel.app/](https://data-visualization-and-analysis-por.vercel.app/)
+<!-- Live Portfolio: https://data-visualization-and-analysis-por.vercel.app/ -->
 - data/
   - raw/       # Original dataset (never edited)
   - processed/ # Cleaned output from pipeline
