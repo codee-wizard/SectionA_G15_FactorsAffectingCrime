@@ -1,4 +1,4 @@
-# Factors Affecting Crime: Optimizing Law Enforcement Resource Allocation
+# Factors Affecting Crime: Optimizing Law Enforcement Resource Allocation 
 
 > **Newton School of Technology | Data Visualization & Analytics**  
 > A 2-week industry simulation capstone using Python, GitHub, and Tableau to convert raw LAPD crime data into actionable law enforcement intelligence.
@@ -13,7 +13,7 @@
 | **Sector** | Public Safety & Law Enforcement |
 | **Team ID** | Section A – Group 15 |
 | **Section** | Section A |
-| **Faculty Mentor** | Aayushi Mam |
+| **Faculty Mentor** | Aayushi Mam & Satyaki Sir |
 | **Institute** | Newton School of Technology |
 | **Submission Date** | April 29, 2026 |
 
