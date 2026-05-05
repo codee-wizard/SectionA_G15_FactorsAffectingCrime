@@ -13,7 +13,7 @@
 | **Sector** | Public Safety & Law Enforcement |
 | **Team ID** | Section A – Group 15 |
 | **Section** | Section A |
-| **Faculty Mentor** | Aayushi Mam |
+| **Faculty Mentor** | Aayushi Mam & Satyaki Sir |
 | **Institute** | Newton School of Technology |
 | **Submission Date** | April 29, 2026 |
 
