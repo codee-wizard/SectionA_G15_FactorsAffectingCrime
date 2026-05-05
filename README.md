@@ -15,7 +15,7 @@
 | **Section** | Section A |
 | **Faculty Mentor** | Aayushi Mam |
 | **Institute** | Newton School of Technology |
-| **Submission Date** | April 28, 2026 |
+| **Submission Date** | April 29, 2026 |
 
 ### Team Members
 
