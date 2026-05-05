@@ -50,7 +50,7 @@ Urban law enforcement agencies face finite budgets and severe personnel constrai
 |---|---|
 | **Source Name** | LAPD Crime Incidents Dataset |
 | **Direct Access Link** | [data/raw/crime_dataset.csv](data/raw/crime_dataset.csv) |
-| **Row Count** | 326,327 (cleaned) from 1,004,894 raw |
+| **Row Count** | 271,673 (cleaned) from 1,004,894 raw |
 | **Column Count** | 24 canonical columns + 7 derived features |
 | **Time Period Covered** | January 1, 2020 – December 30, 2024 |
 | **Format** | CSV |
@@ -78,16 +78,16 @@ For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionar
 
 | KPI | Definition | Value | Formula / Computation |
 |---|---|---|---|
-| **Total Crimes** | Total high-fidelity incident volume (2020–2024) | 326,327 | `COUNT(DR_NO)` on cleaned dataset |
-| **Night Crime Ratio** | % of crimes occurring between 21:00–05:00 | 30.91% | `crimes_in_night_hours / total_crimes × 100` |
+| **Total Crimes** | Total high-fidelity incident volume (2020–2024) | 271,673 | `COUNT(DR_NO)` on cleaned dataset |
+| **Night Crime Ratio** | % of crimes occurring between 21:00–05:00 | 30.57% | `crimes_in_night_hours / total_crimes × 100` |
 | **Peak Hour Index** | % of all crimes concentrated in the single busiest hour (20:00) | 5.75% | `crimes_at_peak_hour / total_crimes × 100` |
-| **Violent Crime Ratio** | Share of assault/battery incidents vs. total | 45.5% | `is_violent==1 count / total_crimes × 100` |
-| **Top 5 Area Concentration** | % of citywide crime in the 5 highest-volume divisions | 35.8% | `sum(top5_area_counts) / total_crimes × 100` |
-| **Average Victim Age** | Mean age of crime victims | 37.26 years | `MEAN(Vict Age)` after median imputation |
-| **Resolution Rate** | % of cases with a conclusive status (Adult/Juv Arrest or Closed) | 17.28% | `resolved_cases / total_cases × 100` |
-| **Investigation Pending Rate** | % of cases still under investigation (`Invest Cont`) | 58.34% | `IC_status_count / total_cases × 100` |
-| **Weekend Crime Ratio** | % of incidents occurring on Saturday or Sunday | 31.06% | `weekend_crimes / total_crimes × 100` |
-| **Crime Diversity Index** | Count of unique crime types in cleaned dataset | 122 | `COUNT(DISTINCT Crm Cd Desc)` |
+| **Violent Crime Ratio** | Share of assault/battery incidents vs. total | 46.1% | `is_violent==1 count / total_crimes × 100` |
+| **Top 5 Area Concentration** | % of citywide crime in the 5 highest-volume divisions | 35.7% | `sum(top5_area_counts) / total_crimes × 100` |
+| **Average Victim Age** | Mean age of crime victims | 38.12 years | `MEAN(Vict Age)` after median imputation |
+| **Resolution Rate** | % of cases with a conclusive status (Adult/Juv Arrest or Closed) | 17.47% | `resolved_cases / total_cases × 100` |
+| **Investigation Pending Rate** | % of cases still under investigation (`Invest Cont`) | 57.11% | `IC_status_count / total_cases × 100` |
+| **Weekend Crime Ratio** | % of incidents occurring on Saturday or Sunday | 31.29% | `weekend_crimes / total_crimes × 100` |
+| **Crime Diversity Index** | Count of unique crime types in cleaned dataset | 10 | `COUNT(DISTINCT Crm Cd Desc)` (top categories shown) |
 
 KPI computation logic is documented in [`notebooks/04_statistical_analysis.ipynb`](notebooks/04_statistical_analysis.ipynb) and [`notebooks/05_final_load_prep.ipynb`](notebooks/05_final_load_prep.ipynb).
 
@@ -98,8 +98,8 @@ KPI computation logic is documented in [`notebooks/04_statistical_analysis.ipynb
 | Item | Details |
 |---|---|
 | **Dashboard URL** | [View on Tableau Public](https://public.tableau.com/app/profile/apoorva.choudhary3398/viz/Factors_Affecting_Crime/CrimeOverviewandTrends?publish=yes) |
-| **Dashboard 1 – Crime Overview & Trends** | Monthly crime trend line, peak hour heatmap (day × hour), quarterly seasonality bar, yearly volume — with KPI tiles for Total Crimes, Night Ratio, Avg Victim Age, Weekend Ratio |
-| **Dashboard 2 – Spatial & Crime Nature** | Crime type treemap, Top 5 LAPD area bar chart, geographic hotspot map, violent ratio and crime diversity KPIs |
+| **Dashboard 1 – Crime Overview & Trends** | Monthly crime trend line, peak hour heatmap (day × hour), quarterly seasonality bar, yearly volume — with KPI tiles for Total Crimes, Night Ratio, Avg Crimes per Day, Weekend Ratio |
+| **Dashboard 2 – Spatial & Crime Nature** | Crime type Pareto analysis, Top 5 LAPD area bar chart, geographic hotspot map, violent ratio and crime diversity KPIs |
 | **Dashboard 3 – Victim, Context & Enforcement** | Victim age histogram, victim descent × age group matrix, top premises type bar, gender split, resolution rate, investigation pending rate |
 | **Main Filters** | Age Group, Crime Type, Hour of Day, Month — usable across all three dashboards |
 
@@ -109,13 +109,13 @@ Dashboard screenshots are stored in [`tableau/screenshots/`](tableau/screenshots
 
 ## Key Insights
 
-1. **Crime peaks sharply at 8 PM** — 18,765 incidents concentrate in a single hour (20:00), accounting for 5.75% of all citywide crime. This single hour justifies a dedicated surge-deployment policy.
+1. **Crime peaks sharply at 8 PM** — incidents concentrate heavily in the 20:00 hour, accounting for 5.75% of all citywide crime. This single hour justifies a dedicated surge-deployment policy.
 
-2. **Two precincts drive nearly a fifth of all crime** — 77th Street (8.8%, 28,932 incidents) and Central (7.5%, 24,560 incidents) together exceed the combined volume of the bottom 16 divisions.
+2. **Two precincts drive nearly a fifth of all crime** — 77th Street (24,124 incidents) and Central (20,291 incidents) together far exceed the combined volume of lower-risk divisions.
 
-3. **Nearly 1 in 3 crimes happens at night** — the 30.91% Night Crime Ratio (21:00–05:00) confirms that graveyard-shift staffing is chronically under-resourced relative to actual demand.
+3. **Nearly 1 in 3 crimes happens at night** — the 30.57% Night Crime Ratio (21:00–05:00) confirms that graveyard-shift staffing is chronically under-resourced relative to actual demand.
 
-4. **Assault and battery dominate the crime mix** — Battery/Simple Assault (74,704) and Aggravated Assault with Deadly Weapon (53,451) together represent 22.9% of all incidents, driving the 45.5% Violent Crime Ratio and dictating a need for physical response units rather than non-contact enforcement.
+4. **Assault and battery dominate the crime mix** — Battery/Simple Assault and Aggravated Assault with Deadly Weapon together represent 22.9% of all incidents, driving the 46.1% Violent Crime Ratio and dictating a need for physical response units rather than non-contact enforcement.
 
 5. **Adults aged 35–49 face the highest victimization burden** — this cohort accounts for 111,000+ incidents, suggesting targeted community-safety programs for working-age adults are warranted in high-risk divisions.
 
@@ -123,15 +123,15 @@ Dashboard screenshots are stored in [`tableau/screenshots/`](tableau/screenshots
 
 7. **Public streets and parking lots are the primary crime theatres** — beyond residences, these outdoor premises account for the next largest incident volumes, making visible vehicle patrols the highest-leverage deterrence tool.
 
-8. **Only 17.28% of cases are resolved** — with 58.34% still under investigation, the department faces a case-clearance crisis; investigative resources are stretched thin across too many open cases.
+8. **Only 17.47% of cases are resolved** — with 57.11% still under investigation, the department faces a case-clearance crisis; investigative resources are stretched thin across too many open cases.
 
 9. **January 1, 2020 is a statistical anomaly** — Z-Score analysis flagged 506 crimes on this single date (Z > 4.5), confirming that automated anomaly detection can surface non-standard events requiring tactical review.
 
 10. **A logistic regression model predicts violent crime at 61% accuracy** using only location, hour, and victim demographics — demonstrating that predictive pre-deployment is operationally viable without complex infrastructure.
 
-11. **Crime peaked in July 2023 (7,208 incidents)** and shows seasonal Q3 concentration annually, giving resource planners a repeatable summer-surge planning signal.
+11. **Crime shows seasonal Q3 concentration annually**, giving resource planners a repeatable summer-surge planning signal.
 
-12. **Weekend crime ratio of 31.06%** is disproportionate to the 2/7 (28.6%) expected baseline, indicating weekend patrol strength should exceed weekday levels in hotspot divisions.
+12. **Weekend crime ratio of 31.29%** is disproportionate to the 2/7 (28.6%) expected baseline, indicating weekend patrol strength should exceed weekday levels in hotspot divisions.
 
 ---
 
@@ -140,9 +140,9 @@ Dashboard screenshots are stored in [`tableau/screenshots/`](tableau/screenshots
 | # | Insight | Recommendation | Expected Impact |
 |---|---|---|---|
 | 1 | 8 PM surge + 77th Street / Central concentration | Reallocate 10% of patrol units from low-risk divisions (West LA, Devonshire) to 77th Street and Central during the 19:00–21:00 window | Elevated coverage at peak risk with zero headcount increase |
-| 2 | 30.91% night crime ratio | Restructure graveyard shift (21:00–05:00) staffing to match actual incident distribution rather than administrative tradition | Reduce incident-to-response time in under-patrolled night windows |
-| 3 | 45.5% violent crime ratio dominated by assault/battery | Prioritize physical response units (not community liaison teams) in Part-1 hotspots; deploy de-escalation-trained officers to domestic assault clusters | Faster appropriate response, reduced officer injury risk |
-| 4 | 17.28% resolution rate with 58.34% pending | Introduce case-triage protocols that fast-track high-evidence violent cases and administratively close low-probability cold cases to free investigator bandwidth | Improved clearance rate and investigator capacity |
+| 2 | 30.57% night crime ratio | Restructure graveyard shift (21:00–05:00) staffing to match actual incident distribution rather than administrative tradition | Reduce incident-to-response time in under-patrolled night windows |
+| 3 | 46.1% violent crime ratio dominated by assault/battery | Prioritize physical response units (not community liaison teams) in Part-1 hotspots; deploy de-escalation-trained officers to domestic assault clusters | Faster appropriate response, reduced officer injury risk |
+| 4 | 17.47% resolution rate with 57.11% pending | Introduce case-triage protocols that fast-track high-evidence violent cases and administratively close low-probability cold cases to free investigator bandwidth | Improved clearance rate and investigator capacity |
 | 5 | Chi-square confirms area + hour as significant crime predictors | Deploy the logistic regression violent-crime predictor as a shift-briefing tool so lieutenants receive a pre-shift probability map for their division | Shift from reactive dispatch to proactive positioning |
 
 ---
@@ -153,7 +153,7 @@ The project follows a 5-stage notebook-driven pipeline:
 
 **Stage 1 — Extraction** (`01_extraction.ipynb`): Loads the raw 1,004,894-row CSV and inspects initial schema and data quality issues.
 
-**Stage 2 — Cleaning** (`02_cleaning.ipynb`): Converts date/time fields, deduplicates on `DR_NO`, normalizes victim attribute codes, replaces invalid ages (≤0) with median (35), drops sparse columns (`Crm Cd 2/3/4`, `Cross Street`), and exports the canonical 326,327-row cleaned file.
+**Stage 2 — Cleaning** (`02_cleaning.ipynb`): Converts date/time fields, deduplicates on `DR_NO`, normalizes victim attribute codes, replaces invalid ages (≤0) with median (35), drops sparse columns (`Crm Cd 2/3/4`, `Cross Street`), and exports the canonical 271,673-row cleaned file.
 
 **Stage 3 — EDA** (`03_eda.ipynb`): Univariate and bivariate analysis across temporal, spatial, and victim dimensions; outlier detection and distribution inspection.
 
@@ -192,18 +192,18 @@ SectionA_G15_FactorsAffectingCrime/
 │   └── 05_final_load_prep.ipynb
 │
 ├── scripts/
-│   └── etl_pipeline.py               # Standalone cleaning pipeline
+│   └── etl_pipeline.py              
 │
 ├── tableau/
-│   ├── screenshots/                  # Dashboard image exports
-│   └── dashboard_links.md            # Tableau Public URLs
+│   ├── screenshots/                  
+│   └── dashboard_links.md           
 │
 ├── reports/
 │   ├── DVA_Capstone_Report.pdf
 │   └── FactorsAffectingCrimeppt.pdf
 │
 ├── docs/
-│   └── data_dictionary.md            # Full column definitions and lineage
+│   └── data_dictionary.md           
 │
 ├── DVA-oriented-Resume/
 └── DVA-oriented-Portfolio/
@@ -256,7 +256,7 @@ SectionA_G15_FactorsAffectingCrime/
 | Apoorva (Project Lead) | Support | Support | Support | Support | Owner | Owner | Support |
 | Arun Kumar | Owner | Support | Support | Support | Support | Support | Support |
 | Ishan | Support | Owner | Support | Support | Support | Support | Support |
-| Divyansh | Support | Owner | Support | Support | Support | Support | Support |
+| Divyansh | Support | Support | Support | Owner | Support | Support | Support |
 | Nakul | Support | Support | Support | Support | Owner | Support | Support |
 | Archit | Support | Support | Support | Support | Support | Support | Owner |
 
@@ -272,8 +272,6 @@ _Declaration: We confirm that the above contribution details are accurate and ve
 |---|---|
 | GitHub Repository | [github.com/codeewizard/SectionA_G15_FactorsAffectingCrime](https://github.com/codeewizard/SectionA_G15_FactorsAffectingCrime) |
 | Tableau Dashboard (Overview) | [Crime Overview & Trends](https://public.tableau.com/app/profile/apoorva.choudhary3398/viz/Factors_Affecting_Crime/CrimeOverviewandTrends?publish=yes) |
-| Tableau Dashboard (Victim Context) | [Victim Context & Enforcement](https://public.tableau.com/app/profile/apoorva.choudhary3398/viz/Factors_Affecting_Crime/VictimContextandEnforcement?publish=yes) |
-
 ---
 
 *Newton School of Technology — Data Visualization & Analytics | Capstone 2 | Section A, Group 15*
