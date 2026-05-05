@@ -32,7 +32,7 @@
 
 ## Business Problem
 
-Urban law enforcement agencies face finite budgets and severe personnel constraints. Police chiefs, resource planners, and city councils cannot afford uniform, city-wide patrol distributions — deploying officers equally across unequal risk zones leads to over-patrolling safe areas while high-crime hotspots remain understaffed.
+Urban law n enforcement agencies face finite budgets and severe personnel constraints. Police chiefs, resource planners, and city councils cannot afford uniform, city-wide patrol distributions — deploying officers equally across unequal risk zones leads to over-patrolling safe areas while high-crime hotspots remain understaffed.
 
 **Core Business Question**
 
