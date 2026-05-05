@@ -11,7 +11,7 @@ The cleaning stage transforms the raw LAPD Crime Incidents dataset into a high-f
 
 | Attribute | Before Cleaning | After Cleaning |
 |---|---|---|
-| **Rows** | 1,004,894 | 271,673 |
+| **Rows** | 1,004,894 | 326327 |
 | **Columns** | 28 | 24 |
 | **File** | `data/raw/crime_dataset.csv` | `data/processed/crime_dataset_clean.csv` |
 
