@@ -2,7 +2,7 @@
 
 > **Newton School of Technology | Data Visualization & Analytics**  
 > A 2-week industry simulation capstone using Python, GitHub, and Tableau to convert raw LAPD crime data into actionable law enforcement intelligence.
-m
+
 ---
 
 ## Project Overview
